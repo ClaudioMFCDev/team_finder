@@ -49,13 +49,13 @@ export default function ApplicantForm({ teamRequestId }: Props) {
         placeholder="Tu nombre"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        className="border p-2 w-full"
+        className="border p-2 w-full text-gray-800"
       />
       <textarea
         placeholder="Mensaje al creador del equipo"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
-        className="border p-2 w-full"
+        className="border p-2 w-full text-gray-800"
       />
       <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded">
         Postularme

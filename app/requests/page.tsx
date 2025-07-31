@@ -1,6 +1,10 @@
 // app/requests/page.tsx
 import prisma from '@/lib/prisma';
 import Link from 'next/link';
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/authOptions"; // Ajustá la ruta según tengas el archivo
+
+const session = await getServerSession(authOptions);
 
 type RequestType = Awaited<ReturnType<typeof prisma.teamRequest.findMany>>[number];
 
@@ -28,12 +32,15 @@ export default async function RequestsPage() {
                 Creado por {req.createdBy} el{' '}
                 {new Date(req.createdAt).toLocaleDateString()}
               </p>
+
+              {session?.user?.id !== req.userId && (
               <Link
                 href={`/requests/${req.id}`}
                 className="text-blue-600 hover:underline"
               >
                 Postularse
               </Link>
+              )}
             </li>
           ))}
         </ul>

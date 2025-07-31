@@ -3,7 +3,9 @@ import prisma from '@/lib/prisma';
 
 export async function POST(request: Request) {
   try {
+
     const { username, password } = await request.json();
+
     if (!username || !password) {
       return NextResponse.json({ error: 'Faltan campos' }, { status: 400 });
     }
