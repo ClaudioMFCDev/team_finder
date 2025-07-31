@@ -4,11 +4,12 @@ import Link from 'next/link';
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/authOptions"; // Ajustá la ruta según tengas el archivo
 
-const session = await getServerSession(authOptions);
 
 type RequestType = Awaited<ReturnType<typeof prisma.teamRequest.findMany>>[number];
 
 export default async function RequestsPage() {
+  // Get Session dentro de
+  const session = await getServerSession(authOptions);
   // Traemos todos los pedidos, los más recientes primero
   const requests: RequestType[] = await prisma.teamRequest.findMany({
     orderBy: { createdAt: 'desc' },

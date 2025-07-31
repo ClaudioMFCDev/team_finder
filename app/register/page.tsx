@@ -41,7 +41,7 @@ export default function RegisterPage() {
             placeholder="Usuario"
             value={username}
             onChange={e => setUsername(e.target.value)}
-            className="border p-2 w-full"
+            className="border p-2 w-full text-gray-800"
             required
           />
           <input
@@ -49,7 +49,7 @@ export default function RegisterPage() {
             placeholder="Contraseña"
             value={password}
             onChange={e => setPassword(e.target.value)}
-            className="border p-2 w-full"
+            className="border p-2 w-full text-gray-800"
             required
           />
           <button
