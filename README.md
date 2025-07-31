@@ -4,7 +4,7 @@ Proyecto con Next.js, TypeScript, Prisma y SQLite.
 
 ## 🚀 Instrucciones para levantar el proyecto
 
-### 1. Cloná el repositorio
+### 1. Cloná el repositorio y pararse en la carpeta raiz (con cd team-finder)
 
 ```bash
 git clone https://github.com/usuario/team-finder.git
