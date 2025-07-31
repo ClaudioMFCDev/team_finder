@@ -2,12 +2,27 @@
 
 import Link from 'next/link';
 import { useSession, signOut } from 'next-auth/react';
+import { useEffect, useState } from 'react';
 
 export default function Navbar() {
   const { data: session, status } = useSession();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <nav className="bg-gray-800 text-white px-6 py-4 flex justify-between items-center">
+    <nav
+      className={`sticky top-0 z-50 px-6 py-4 flex justify-between items-center transition-colors duration-300 ${
+        scrolled ? 'bg-gray-800/40 backdrop-blur-sm shadow-md' : 'bg-gray-800'
+      } text-white`}
+    >
       <Link href="/" className="text-xl font-bold">
         Team Finder
       </Link>
@@ -33,7 +48,9 @@ export default function Navbar() {
             </button>
           </Link>
 
-          <span>Hola, {session.user?.name ?? session.user?.email}</span>
+          <span>
+            Hola, {session.user?.name ?? session.user?.email}
+          </span>
           <button
             onClick={() => signOut({ callbackUrl: '/' })}
             className="bg-red-600 px-3 py-1 rounded hover:bg-red-700"
