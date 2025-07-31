@@ -23,7 +23,7 @@ export default function LoginForm() {
     if (res?.error) {
       setError("Usuario o contraseña incorrectos");
     } else {
-      router.push("/new-request"); // o donde quieras redirigir
+      router.push("/"); // o donde quieras redirigir
     }
   };
 
