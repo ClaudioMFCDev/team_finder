@@ -27,10 +27,14 @@ model TeamRequest {
 model Applicant {
   id            String      @id @default(cuid())
   name          String
+  email         String
   message       String
   teamRequest   TeamRequest @relation(fields: [teamRequestId], references: [id])
   teamRequestId String
   createdAt     DateTime    @default(now())
+
+  @@unique([email, teamRequestId])
+
 }
 
 model User {

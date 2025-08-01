@@ -4,6 +4,7 @@ import { z, ZodError } from 'zod';
 
 const ApplicantSchema = z.object({
   name: z.string().min(1),
+  email: z.string().email(),
   message: z.string().min(1),
   teamRequestId: z.string().cuid(),
 });
@@ -13,9 +14,27 @@ export async function POST(request: Request) {
     const json = await request.json();
     const data = ApplicantSchema.parse(json);
 
+    // Verificar si ya existe una postulación con ese email para ese teamRequestId
+    const existing = await prisma.applicant.findUnique({
+      where: {
+        email_teamRequestId: {
+          email: data.email,
+          teamRequestId: data.teamRequestId,
+        },
+      },
+    });
+
+    if (existing) {
+      return NextResponse.json(
+        { error: 'Ya te has postulado a esta solicitud con este email.' },
+        { status: 409 }
+      );
+    }
+
     const applicant = await prisma.applicant.create({
       data: {
         name: data.name,
+        email: data.email,
         message: data.message,
         teamRequestId: data.teamRequestId,
       },
