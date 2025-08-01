@@ -21,6 +21,7 @@ export default async function Home() {
         {pedidos.map((pedido) => (
           <div key={pedido.id} className="border rounded p-4">
             <h2 className="text-xl font-semibold">{pedido.category}</h2>
+            <h3 className="text-lg">(postulantes: {pedido.applicants.length})</h3>
             <p>{pedido.description}</p>
             <p className="text-sm text-gray-500">
               Creado por: {pedido.user.username}

@@ -45,7 +45,7 @@ export default function RequestDetailPage() {
   return (
     <div className="max-w-2xl mx-auto p-4 space-y-8">
       <div className="bg-gray-100 p-4 rounded shadow space-y-2">
-        <h1 className="text-2xl font-bold mb-1 text-gray-950">{requestDetail.category}</h1>
+        <h1 className="text-2xl font-bold mb-1 text-gray-950">{requestDetail.category} (postulantes: {applicants.length})</h1>
         <p className="text-gray-700 ">{requestDetail.description}</p>
 
         <div>
@@ -77,7 +77,7 @@ export default function RequestDetailPage() {
 
       <ApplicantForm teamRequestId={id as string} />
 
-      <div>
+      {/* <div>
         <h2 className="text-xl font-semibold mb-2">Postulantes</h2>
         {applicants.length === 0 ? (
           <p className="text-gray-500">Todavía no hay postulantes.</p>
@@ -91,7 +91,7 @@ export default function RequestDetailPage() {
             ))}
           </ul>
         )}
-      </div>
+      </div> */}
     </div>
   );
 }
