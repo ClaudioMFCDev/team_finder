@@ -1,58 +1,80 @@
 # Team Finder
 
-Proyecto con Next.js, TypeScript, Prisma y SQLite.
+**Team Finder** es una aplicación web que permite a usuarios crear y gestionar solicitudes de equipo para juegos en línea (como League of Legends, Valorant, etc.). Otros jugadores pueden postularse a estas solicitudes de forma simple y sin necesidad de registrarse, proporcionando su nombre, email y un mensaje.
 
-## 🚀 Instrucciones para levantar el proyecto
+## 🛠 Stack Tecnológico
 
-### 1. Cloná el repositorio y pararse en la carpeta raiz (con cd team-finder)
+- **Next.js 14** con App Router
+- **TypeScript**
+- **Prisma ORM** con base de datos **SQLite**
+- **Tailwind CSS** para estilos
+- **Autenticación con NextAuth.js**
+- **Servidor local / desarrollo sin backend externo**
 
-```bash
-git clone https://github.com/usuario/team-finder.git
-cd team-finder
+## 🔍 Funcionalidades
+
+- Registro de usuarios y login seguro.
+- Creación de solicitudes de equipo con título, categoría y descripción.
+- Vista de pedidos disponibles directamente en la página de inicio.
+- Cada pedido muestra:
+  - Su categoría (juego)
+  - Descripción
+  - Creador
+  - Cantidad de postulantes
+- Un usuario puede postularse a pedidos ajenos ingresando su nombre, email y mensaje.
+- No se permite que el creador se postule a su propio pedido.
+- Un mismo email no puede postularse más de una vez al mismo pedido (validación por email único).
+- Navbar fijo con navegación simple y estilizado con botones.
+- Imagen de fondo personalizada con ajustes de brillo, saturación y contraste para mejor estética visual.
+
+## 👩‍💻 Participantes
+
+- **Jason Pelis** - Desarrollo Fullstack
+- **Cynthia Sotelo** - Colaboradora / Testing / Revisión
+
+## ▶️ Cómo iniciar el proyecto
+
+1. Clonar el repositorio:
+
+   ```bash
+   git clone <URL_DEL_REPO>
+   cd team-finder
+   ```
+
+2. Instalar dependencias:
+
+   ```bash
+   npm install
+   ```
+
+3. Aplicar la base de datos local y correr migraciones:
+
+   ```bash
+   npx prisma migrate reset --force
+   ```
+
+4. Iniciar el servidor de desarrollo:
+
+   ```bash
+   npm run dev
+   ```
+
+5. ¡Listo! Accedé a la app desde `http://localhost:3000`
+
+## 📁 Estructura general del proyecto
+
+```
+/app
+  /api
+    /applicants
+    /requests
+  /requests
+  /auth
+  /components
+/prisma
+  schema.prisma
+/lib
+  prisma.ts
+  authOptions.ts
 ```
 
-### 2. Instalá las dependencias
-
-```bash
-npm install
-```
-
-### 3. Configurá la base de datos local
-
-Usamos **SQLite**, no necesita instalación.
-
-Asegurate de tener el archivo `.env.local` con el siguiente contenido:
-
-```
-DATABASE_URL="file:./dev.db"
-```
-
-> Si no existe, crealo manualmente en la raíz del proyecto.
-
-### 4. Generá y sincronizá la base de datos
-
-```bash
-npx prisma migrate reset --force
-```
-
-Esto:
-- Borra y recrea la base de datos.
-- Corre los seeds si hay (opcional).
-- Refleja los modelos de Prisma.
-
-### 5. Levantá el servidor de desarrollo
-
-```bash
-npm run dev
-```
-
-Abrí `http://localhost:3000` para ver el proyecto en el navegador.
-
----
-
-## 🧠 Notas
-
-- Para ver tus propios pedidos: `/mis-pedidos`
-- Para ver todos los pedidos: `/`
-- Registro y login están implementados con NextAuth.
-- La base de datos es local y no requiere configuración extra.
