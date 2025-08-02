@@ -29,15 +29,15 @@
 
 ## 👩‍💻 Participantes
 
-- **Jason Pelis** - Desarrollo Fullstack
-- **Cynthia Sotelo** - Colaboradora / Testing / Revisión
+- **Castillo, Claudio M. F.** - Desarrollo Fullstack
+- **Sotelo, Cynthia ** - Colaboradora / Testing / Revisión
 
 ## ▶️ Cómo iniciar el proyecto
 
 1. Clonar el repositorio:
 
    ```bash
-   git clone <URL_DEL_REPO>
+   git clone https://github.com/ClaudioMFCDev/team_finder.git
    cd team-finder
    ```
 
